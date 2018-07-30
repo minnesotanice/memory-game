@@ -9,19 +9,16 @@ class App extends Component {
   // Setting this.state.memory to the memory json array
   state = {
     memory: memory,
-    justClicked: "",
     arrayOfClicked: [],
-    duplicateGuess: false,
     currentScore: 0,
     topScore: 0,
   };
 
   // RECORD MEMORY
   recordMemory = id => {
-      console.log("we are clicked");
-      console.log(this.state.currentScore);
+      // console.log("recordMemory this.state.currentScore is ", this.state.currentScore);
 
-      // function for shuffling images
+      // Shuffle images
       const oldOrder = this.state.memory
       const newOrder = shuffle(oldOrder)
       function shuffle(imageOrder) {
@@ -34,42 +31,54 @@ class App extends Component {
         }
         return imageOrder;
       }
+      // Image order states
+      this.setState({ memory:newOrder });
 
-      // Detect duplicate guess
-      const newList = this.state.arrayOfClicked
-      const self = this
-      newList.map(function(singleID){
-        console.log(singleID);
+
+      // Detect duplicate image click
+      const ArrayOfClicked = this.state.arrayOfClicked
+      let duplicateBoolean = false
+      ArrayOfClicked.map(function(singleID){
+         
         if ( singleID === id ){
-          console.log("you lose!");
-          self.setState({ duplicateGuess:true });
-        }
-        // return( this.push(id) )
+          duplicateBoolean = true
+        } 
+ 
+        return(duplicateBoolean);
+       
       })
-      newList.push(id)  
 
 
-    // Set current score
-    if (this.state.duplicateGuess === true) {
-      console.log("duplicate guess");
-      this.setState( { currentScore: 0 } )
-    } else {
-      console.log("NOT duplicate guess");
-      this.setState( { currentScore: this.state.currentScore + 1 } )
-          // Set top score
-        if ( this.state.currentScore === this.state.topScore) {
-          this.setState({ topScore: this.state.currentScore + 1 })
+      // Scoring & Clicked Image Tracking
+      let myScore = this.state.currentScore
+      let myTopScore = this.state.topScore
+      if ( duplicateBoolean === false) {
+        // increase points
+        myScore = myScore + 1
+        this.setState({ currentScore: myScore })
+
+        // check for new top score
+        if ( myScore > myTopScore ) {
+          this.setState({ topScore: myScore })
+        }
+
+        // Add ID of clicked image to array of clicked IDs
+        ArrayOfClicked.push(id)  
+
+      } else {
+        // set points to 0
+        myScore = 0
+        this.setState({ currentScore: myScore })
+
+        // empty array of clicked
+        this.setState({ arrayOfClicked: [] })
       }
-    }
-
-    // Set new order for display of images and update array of clicked image IDs
-    this.setState({ memory:newOrder, arrayOfClicked:newList });
   };
 
 
-  // Map over this.state.memory and render a MemoryCard component for each friend object
+
   render() {
-    console.log("this is the state ", this.state);
+    // console.log("this is the state ", this.state);
 
       return ( 
         <Wrapper>
