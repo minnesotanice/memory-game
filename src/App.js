@@ -89,11 +89,23 @@ class App extends Component {
 
           <div className="container">
               <div className="row">
+                  <div className="col-12 text-center mb-3">
+                    Try to click as many images as you can without clicking the same image twice.
+                  </div>
+              </div>
+          </div>
+
+          <div className="container">
+              <div className="row">
                   <div className="col-6 text-right">
-                      Current Score: {this.state.currentScore} 
+                    <h3>
+                      Current Score: {this.state.currentScore}
+                    </h3>
                   </div>
                   <div className="col-6 text-left">
+                    <h3>
                       Top Score: {this.state.topScore}
+                    </h3>
                   </div>
               </div>
           </div>
