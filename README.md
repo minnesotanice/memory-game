@@ -1,4 +1,4 @@
-# Memory Game
+# Memory Game of Thrones
 
 ## A React Application
 
@@ -15,3 +15,7 @@ A memory game created with React. This application's user interface is broken up
 * Once the user's score is reset after an incorrect guess, the game restarts.
 
 * Top score is tracked until the page is refreshed.
+
+### Link to App on Heroku
+
+[Memory Game of Thrones](https://memory-game-got.herokuapp.com/)
