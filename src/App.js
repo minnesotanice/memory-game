@@ -1,3 +1,5 @@
+// normally routes are set in this folder
+
 import React, { Component } from "react";
 import MemoryCard from "./components/MemoryCard";
 import Wrapper from "./components/Wrapper";
@@ -82,10 +84,8 @@ class App extends Component {
 
       return ( 
         <Wrapper>
-          <Title>
-              The North Remembers, Do You?
-
-          </Title> 
+          <Title mainTitle={"Memory Game of Thrones"} subTitle={"The North Remembers, Do You?"}/>
+             
 
           <div className="container">
               <div className="row">

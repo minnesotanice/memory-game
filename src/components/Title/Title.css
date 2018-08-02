@@ -1,4 +1,4 @@
-h1 {
+h1, h4 {
   font-family: 'Oldenburg', cursive;
-  line-height: 8rem;
+  /* line-height: 8rem; */
 }
