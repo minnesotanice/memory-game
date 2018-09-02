@@ -19,3 +19,5 @@ A memory game created with React. This application's user interface is broken up
 ### Link to App on Heroku
 
 [Memory Game of Thrones](https://memory-game-got.herokuapp.com/)
+
+![alt text](readme-assets/got-screenshot-01.png "Memory Game of Thrones screenshot")
